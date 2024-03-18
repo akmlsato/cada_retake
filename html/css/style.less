@@ -1,0 +1,426 @@
+/* LESS Document */
+
+@color-base : #666;
+@color-inverted : #fff;
+@color-strong : #333;
+@color-area : #eee;
+@color-area2: #b5b5b5;
+@color-hover: #710C0D;
+
+@width-main : 1080px;
+@width-inner : 870px;
+
+.flexbox( @f-wrap, @f-just, @f-align) {
+	display:-webkit-flex;
+	display:flex;
+	flex-wrap: @f-wrap;
+	-webkit-flex-wrap: @f-wrap;
+	justify-content: @f-just;
+	-webkit-justify-content: @f-just;
+	align-items: @f-align;
+	-webkit-align-items: @f-align;
+}
+
+
+/* 基本設定クラス */
+
+.aC { text-align:center;}
+.aL { text-align:left; }
+.aR { text-align:right; }
+.cB { clear:both; }
+.aC2{ text-align:center;}/*PCはセンター、SPは左*/
+@media screen and (max-width: 767px){
+.aC2{ text-align:left;}/*PCはセンター、SPは左*/    
+}
+.fL { float:left; }
+.fR { float:right; }
+
+.mb0  { margin-bottom: 0px !important;}
+.mb00 {	margin-bottom: 0px !important;}
+.mb05 {	margin-bottom: 5px !important;}
+.mb10 {	margin-bottom: 10px !important;}
+.mb15 {	margin-bottom: 15px !important;}
+.mb20 {	margin-bottom: 20px !important;}
+.mb25 {	margin-bottom: 25px !important;}
+.mb30 {	margin-bottom: 30px !important;}
+.mb35 {	margin-bottom: 35px !important;}
+.mb40 {	margin-bottom: 40px !important;}
+.mb45 {	margin-bottom: 45px !important;}
+.mb50 {	margin-bottom: 50px !important;}
+.mb100 {margin-bottom:100px !important;}
+.mb1em {margin-bottom:1.2em  !important;}
+
+.pt10 { padding-top: 10px; }
+.pt20 { padding-top: 20px; }
+.pt30 { padding-top: 30px; }
+
+a:link, a:visited { color:#333; }
+
+
+strong,
+.strong { font-weight:bold; }
+
+sub{ vertical-align: -.3em; }
+
+img { max-width:100%; height:auto;}
+img.border { border:1px solid #ccc; }
+
+
+span.sp-block { display: inline; }
+.forSP { display:none; }
+.forPC { display:inline; }
+@media screen and (max-width: 767px){
+span.sp-block { display: block; }
+.forSP { display:inline; }
+.forPC { display:none; }
+}
+/*------------------------------------------
+	Setting Font
+------------------------------------------*/
+
+@font-face{
+  font-family: "Original Yu Gothic";
+  src: local("Yu Gothic");
+  font-weight: 300;
+}
+
+@font-face{
+  font-family: "Original Yu Gothic";
+  src: local("Yu Gothic");
+  font-weight: 500;
+}
+
+@font-face{
+  font-family: "Original Yu Gothic";
+  src: local("Yu Gothic");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Helvetica Neue";
+  src: local("Helvetica Neue Regular");
+  font-weight: 100;
+}
+@font-face {
+  font-family: "Helvetica Neue";
+  src: local("Helvetica Neue Regular");
+  font-weight: 200;
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Original Yu Gothic", "Yu Gothic", YuGothic, Verdana, Meiryo, "M+ 1p", sans-serif;
+}
+
+/* IE10以上 */
+@media all and (-ms-high-contrast: none)  {
+  html {
+    font-family: Verdana, Meiryo, sans-serif;
+  }
+}
+@media all and (-ms-high-contrast: active) {
+  html {
+    font-family: Verdana, Meiryo, sans-serif;
+  }
+}
+/*------------------------------------------
+	テキスト
+------------------------------------------*/
+
+.txtS { font-size: 74%!important; }
+.txtM { font-size: 85%!important; line-height: 1.8 }
+.txtL { font-size:110%!important; }
+.txtLL{ font-size:130%!important; }
+.txt-normal { font-weight:normal!important;}
+.txt-uline { text-decoration:underline!important; }
+
+.nowrap { white-space:nowrap; }
+
+
+
+
+/*------------------------------------------
+	ページトップへボタン
+------------------------------------------*/
+.pagetop {
+    /*display:block;*/
+    position:fixed;
+	width: 44px;
+	height: 44px;
+    left:auto;
+    bottom:10px;
+    margin-left:920px;
+	opacity: .7;
+	
+	button {
+		border:none;
+		background:none;
+	}
+}
+
+
+
+/*------------------------------------------
+	基本構造
+------------------------------------------*/
+body { 
+	position:relative;
+	color: @color-base;
+	font-size:100%;
+	background: #fff;
+	line-height: 1.5;
+}
+
+#wrapper {
+	width: 100%;
+	min-width: @width-main;
+}
+
+
+/*------------------------------------------
+	ヘッダ
+------------------------------------------*/
+
+#header {
+	background: #ddd;
+	
+	
+	#site-title {
+		position: relative;
+		width: @width-main;
+		margin: 0 auto 20px;
+		padding: 10px 0;
+		text-align: center;
+		p {
+			padding: 40px 0;
+		}
+		#lang {
+			position: absolute;
+			right: 0;
+			font-size: 80%;
+			li {
+				display: inline-block;
+				&:first-child:after {
+					content: "｜";
+					color: @color-inverted;
+					padding: 0 5px;
+				}
+				a {
+					color: @color-inverted;
+					text-decoration: none;
+					&:hover {
+						color: @color-hover;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 767px){
+
+
+}
+/*------------------------------------------
+	ナビゲーション
+------------------------------------------*/
+#nav {
+	width: @width-inner;
+	margin: 0 auto 40px;
+	ul {
+		.flexbox( nowrap, space-between, flex-start );
+		a {
+			text-decoration: none;
+			font-weight: bold;
+			&:hover { color: @color-hover; }
+		}
+	}
+}
+
+/*------------------------------------------
+	フッタ
+------------------------------------------*/
+
+#footer {
+	background: @color-area2;
+	padding: 10px;
+	text-align: center;
+	
+	p { font-size: 85%; color: @color-strong }
+}
+
+
+/*------------------------------------------
+	コンテンツエリア
+------------------------------------------*/
+
+#contentsArea {
+	width: @width-inner;
+	margin: 0 auto;
+}
+
+.mainImg {
+	margin-bottom: 40px;
+}
+
+/*------------------------------------------
+	見出し
+------------------------------------------*/
+.h_1 {
+	font-size: 150%;
+	font-weight: bold;
+	color: @color-strong;
+	margin-bottom: 30px;
+	padding: 5px;
+	background: @color-area;
+}
+
+
+/*------------------------------------------
+	表組み
+------------------------------------------*/
+
+/*------------------------------------------
+	リスト
+------------------------------------------*/
+
+.imageList ul{
+	margin-bottom: 30px;
+	.flexbox ( wrap, space-between, center);
+}
+
+/*------------------------------------------
+	トップページ新着情報
+------------------------------------------*/
+.top-newsBox {
+	margin-bottom: 50px;
+	ul {
+		margin-bottom: 30px;
+		li {
+			padding-bottom: 10px;
+			margin-bottom: 20px;
+			border-bottom: 1px solid #333;
+			a {
+				font-size: 90%;
+				text-decoration: none;
+				&:hover {text-decoration: underline;}
+				.top-newsDate {
+					width: 120px;
+					display: inline-block;
+					margin-right: 1em;
+					padding-left: 15px;
+				}
+			}
+		}
+	}
+	.top-btn-newsList {
+		text-align: right;
+		a {
+			display: inline-block;
+			padding: 5px 10px;
+			border: 1px solid #333;
+			font-size: 90%;
+			text-decoration: none;
+		}
+	}
+}
+
+/*------------------------------------------
+	トップページバナー
+------------------------------------------*/
+
+.top-bannerArea {
+	margin-bottom: 50px;
+}
+
+/*------------------------------------------
+	about
+------------------------------------------*/
+.about {
+	margin-bottom: 40px;
+	dl {
+		.flexbox( wrap, space-between, flex-start );
+		dt { width: 20%; margin-bottom: 1em;}
+		dd { width: 75%; margin-bottom: 1em;}
+	}
+}
+
+
+/*------------------------------------------
+	お問い合わせ
+------------------------------------------*/
+.formBlock {
+	margin-bottom:10px;
+	padding-bottom:10px;
+	border-bottom:1px dotted #ccc;	
+	display:table;
+	width:100%;
+}
+
+.formBlock label {
+	display:table-cell;
+	width:200px;
+	vertical-align:middle;
+}
+
+.formBlock input[ type="text" ],
+.formBlock input[ type="tel" ],
+.formBlock input[ type="email" ] {
+	display:table-cell;
+	width:300px;
+	padding:8px;
+	font-size:110%;
+	border-radius:2px;
+	border:1px solid #ccc;	
+}
+
+.formBlock input.postalcode {
+	width:100px!important;	
+}
+
+.formBlock input.addressform {
+	width:500px!important;
+}
+
+.formBlock div span {
+	display:block;
+	margin-bottom:10px;	
+}
+
+.formBlock textarea {
+	display:table-cell;
+	width:400px;
+	height:200px;
+	padding:8px;
+	font-size:110%;
+	border-radius:2px;
+	border:1px solid #ccc;	
+}
+
+input[ type="submit" ] ,
+.btnStyle1{
+	border:1px solid #396DB3;
+	border-radius:4px;
+	background:#fff;
+	padding:8px 20px;
+	font-size:110%;
+	color:#396DB3;
+}
+
+.contactForm_submit {
+	text-align:center;	
+}
+
+.formTable {
+	width:100%;	
+	margin-bottom:40px;
+}
+
+.formTable th{
+	width:25%;
+	padding:8px 15px;
+	border-bottom:1px dotted #ccc;
+}
+
+.formTable td{
+	padding:8px 15px;
+	border-bottom:1px dotted #ccc;
+}
